@@ -30,10 +30,7 @@ pExp (And a b)   = pExp a <+> text "&&" <+> pExp b
 pExp (Or  a b)   = pExp a <+> text "||" <+> pExp b
 pExp (Not b  )   = text "!" <+> pExp b
 pExp (VarInc x)  = pVar x <> text "++"
-pExp (VarInc x)  = pVar x <> text "--"
-{- pExp _ =
-  error
-    "El Pretty Printer no está implementado para las extensiones del Ejercicio 1." -}
+pExp (VarDec x)  = pVar x <> text "--"
 
 pExpMaybeParen :: Exp a -> Doc
 pExpMaybeParen e@(Plus _ _)  = parens (pExp e)

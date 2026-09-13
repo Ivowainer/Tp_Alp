@@ -127,8 +127,8 @@ seqop = reservedOp lis ";" >> return Seq
 
 comm1 :: Parser Comm
 comm1 = (reserved lis "skip" >> return Skip)
-  <|> try (
-        do -- Usamos try para no consumir la variable si resulta no ser una asignación) 
+  <|> try ( -- Usamos try para no consumir la variable si resulta no ser una asignación)
+        do  
         v <- identifier lis
         reservedOp lis "="
         e <- intexp
